@@ -1,6 +1,8 @@
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
+import CartWidget from "./CartWidget";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +32,7 @@ const classes = useStyles();
           <Button color="inherit">Cursos intensivos</Button>
           <Button color="inherit">Trayecto de formación</Button>
           <Button color="inherit">Cursos regulares</Button>
+          <CartWidget/>
         </Toolbar>
       </AppBar>
     )
