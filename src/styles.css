@@ -1,0 +1,50 @@
+.cajaproducto {
+    border: 0;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(167deg, rgba(240,240,240,1) 0%, rgba(233,233,233,1) 100%);
+    margin: 5px;
+}
+
+#productosdisponibles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*encabezados h1*/
+h1 {
+    font-size: 3em;
+    color: #8400f6;
+}
+
+@media only screen and (min-width:1921px) {
+    .cajaproducto {
+        width: 27%;
+        min-width: 350px;
+        max-width: 400px;
+    }
+}
+
+@media only screen and (max-width:1920px) {
+    .cajaproducto {
+        width: 40%;
+        min-width: 350px;
+    }
+}
+@media only screen and (max-width: 1280px) {
+    .cajaproducto {
+        width: 100%;
+        min-width: 350px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .cajaproducto {
+        width: 100%;
+        min-width: 350px;
+    }
+}

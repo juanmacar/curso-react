@@ -1,3 +1,5 @@
+import ItemList from './itemList';
+
 const ItemListContainer = (props)=> {
 
     return(
@@ -5,6 +7,7 @@ const ItemListContainer = (props)=> {
         <h3>
             ¡Hola, {props.nombre}!
         </h3>
+        <ItemList />
     </div>
     )}
 export default ItemListContainer
