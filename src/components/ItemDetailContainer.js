@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Item from './Item';
+import ItemDetail from './ItemDetail';
 import '../styles.css';
 
 //funcion que simula una API
@@ -25,7 +25,7 @@ function mock(success) {
 }
 
 //comienzo del componente
-function ItemList() {
+function ItemDetailContainer() {
   //useState para actualizar el valor del array cursos
   const [cursos, setCursos] = useState([])
 
@@ -44,11 +44,11 @@ function ItemList() {
       {
         cursos.map(curso => (
         <>
-        <Item titulo={curso.titulo} precio={curso.precio} stock={curso.stock} id={curso.id} />
+        <ItemDetail titulo={curso.titulo} precio={curso.precio} imagen={curso.imagen} descripcion={curso.descripcion} key={curso.id} />
         </>
         ))
       }
     </div>
 )
 }
-export default ItemList;
+export default ItemDetailContainer
