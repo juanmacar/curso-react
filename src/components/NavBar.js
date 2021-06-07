@@ -3,8 +3,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import CartWidget from "./CartWidget";
 import { NavLink } from "react-router-dom";
-import {useContext} from "react";
-import CartContext from '../contexts/cartContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 const BarraApp = ()=> {
 const classes = useStyles();
-var cartcontext= useContext(CartContext)
-console.log(cartcontext);
 
     return (
         <AppBar position="static" style={{background: "#e6b960"}}>

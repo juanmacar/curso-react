@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemDetail from './ItemDetail';
 import '../styles.css';
+import {useParams} from 'react-router-dom';
 
 //funcion que simula una API
 function mock(success) {
@@ -26,6 +27,7 @@ function mock(success) {
 
 //comienzo del componente
 function ItemDetailContainer() {
+  const {idurl} = useParams();
   //useState para actualizar el valor del array cursos
   const [cursos, setCursos] = useState([])
 
@@ -39,16 +41,28 @@ function ItemDetailContainer() {
     obtenerDatos()
   }, [])
   
+  let retorno = "";
+  if (idurl === undefined) {
   return (
     <div id="productosdisponibles">
       {
         cursos.map(curso => (
         <>
-        <ItemDetail titulo={curso.titulo} precio={curso.precio} imagen={curso.imagen} descripcion={curso.descripcion} key={curso.id} />
+        <ItemDetail titulo={curso.titulo} precio={curso.precio} imagen={curso.imagen} descripcion={curso.descripcion} key={curso.id} stock={curso.stock} id={curso.id}/>
         </>
         ))
       }
     </div>
 )
+    } else {
+      for (const item of cursos) {
+        if (item.id === parseInt(idurl)) {
+          retorno = <ItemDetail titulo={item.titulo} precio={item.precio} imagen={item.imagen} descripcion={item.descripcion} key={item.id} stock={item.stock} id={item.id}/>
+          break
+        }
+      }
+      return (retorno)
+    }
+
 }
 export default ItemDetailContainer

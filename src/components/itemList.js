@@ -44,7 +44,7 @@ function ItemList() {
       {
         cursos.map(curso => (
         <>
-        <Item titulo={curso.titulo} precio={curso.precio} stock={curso.stock} id={curso.id} />
+        <Item titulo={curso.titulo} precio={curso.precio} id={curso.id} />
         </>
         ))
       }
