@@ -2,27 +2,27 @@ import '../styles.css';
 import ItemCount from './ItemCount';
 import { Button } from "@material-ui/core"
 import { useState } from "react";
-import { useCart } from '../contexts/cartContext';
+import { useCart } from '../contexts/CartContext';
+import { NavLink } from "react-router-dom";
 
 function ItemDetail (props) {
-  const cart = useCart();
-  const [count, setCount] = useState(1);
-  const [compraterminada, setCompraterminada] = useState(false);
-  function sumar() {
+  const cart = useCart(); //traigo el contexto.
+  const [count, setCount] = useState(1); //estado para la cantidad de unidades elegidas
+  const [compraterminada, setCompraterminada] = useState(false); //estado para almacenar si la persona cliqueo el botón de compra terminada.
+  function sumar() {//aumenta la cantidad de items a comprar
       setCount(count+1)
   }
-  function restar() {
+  function restar() {//reduce la cantidad de items a comprar
           setCount(count-1)
   }
   function agregarAlCarrito() {
-    setCompraterminada(true)
-    cart.addItem({id : props.id, nombre: props.titulo, precio : props.precio})
-    console.log(cart.cart);
+    setCompraterminada(true)//registro que terminó la selección.
+    cart.addItem({id : props.id, nombre: props.titulo, precio : props.precio, cantidad : count})//cargo el producto en el cart.
   }
-  const Boton = ()=> {
-    let resultado = "";
+  const Boton = ()=> { //botón que renderiza de forma condicional, el boton de elegir cantidad o el de terminar compra.
+    let resultado = ""; //variable para guardar el return
     if (compraterminada) {
-      resultado = <div style={{display:"block"}}><Button>Terminar compra</Button></div>;
+      resultado = <div style={{display:"block"}}><NavLink to={`/cart`}><Button>Terminar compra</Button></NavLink></div>;
     } else {
       resultado = <><ItemCount sumar={sumar} restar={restar} stock={props.stock} count={count}/><Button onClick={agregarAlCarrito}>Agregar al carrito</Button></>
     }

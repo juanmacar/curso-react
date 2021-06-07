@@ -3,7 +3,7 @@ import BarraApp from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer';
-import { CartContextProvider } from './contexts/cartContext';
+import { CartContextProvider } from './contexts/CartContext';
 
 
 
