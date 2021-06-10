@@ -39,6 +39,7 @@ function ItemList() {
     obtenerDatos()
   }, [])
   
+  if (cursos[0] === undefined) return <h1>Loading</h1>
   return (
     <div id="productosdisponibles">
       {

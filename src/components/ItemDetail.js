@@ -9,6 +9,7 @@ function ItemDetail (props) {
   const cart = useCart(); //traigo el contexto.
   const [count, setCount] = useState(1); //estado para la cantidad de unidades elegidas
   const [compraterminada, setCompraterminada] = useState(false); //estado para almacenar si la persona cliqueo el botón de compra terminada.
+  
   function sumar() {//aumenta la cantidad de items a comprar
       setCount(count+1)
   }
@@ -17,7 +18,16 @@ function ItemDetail (props) {
   }
   function agregarAlCarrito() {
     setCompraterminada(true)//registro que terminó la selección.
-    cart.addItem({id : props.id, nombre: props.titulo, precio : props.precio, cantidad : count})//cargo el producto en el cart.
+    if (!cart.isInCart(props.id)) {
+      cart.addItem({id : props.id, nombre: props.titulo, precio : props.precio, cantidad : count})//cargo el producto en el cart.
+    } else { //actualizar la cantidad si el producto ya estaba en el carrito.
+      for (const item of cart.cart.addedItems) { //interaré chequear el stock antes de actualizar la cantidad. En desarrollo
+        if (item.id === props.id) {
+
+        }
+      }
+      cart.updateItem(props.id, count)
+    }
   }
   const Boton = ()=> { //botón que renderiza de forma condicional, el boton de elegir cantidad o el de terminar compra.
     let resultado = ""; //variable para guardar el return
