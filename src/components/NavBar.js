@@ -1,7 +1,7 @@
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import CartWidget from "./CartWidget";
+import CartButton from "./CartButton";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ const classes = useStyles();
           </Typography>
           <NavLink to={`/gratuitos`}><Button color="inherit">Cursos gratuitos</Button></NavLink>
           <NavLink to={`/intensivos`}><Button color="inherit">Cursos intensivos</Button></NavLink>
-          <CartWidget/>
+          <CartButton/>
         </Toolbar>
       </AppBar>
     )

@@ -4,6 +4,7 @@ import ItemListContainer from './components/ItemListContainer';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { CartContextProvider } from './contexts/CartContext';
+import CartWidget from './components/CartWidget';
 
 
 
@@ -12,9 +13,9 @@ function App() {
   return (
 
     <BrowserRouter>
+      <CartContextProvider>
       <BarraApp />
       <Switch>
-        <CartContextProvider>
         <Route exact path="/">
           <ItemListContainer/>
         </Route>
@@ -31,9 +32,10 @@ function App() {
           <ItemDetailContainer/>
         </Route>
         <Route exact path="/cart">
+          <CartWidget />
         </Route>
-        </CartContextProvider>
       </Switch>
+      </CartContextProvider>
     </BrowserRouter>
   );
 

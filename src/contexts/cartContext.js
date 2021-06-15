@@ -9,7 +9,6 @@ const [cart, setCart] = useState({addedItems: [], totalprice : 0})
 
 function addItem(item) {
     setCart({ ...cart, addedItems: [...cart.addedItems, item], totalprice : (cart.totalprice + (item.precio * item.cantidad))})
-    console.log(cart);
 }
 function clearCart() {
     setCart({addedItems: [], totalprice : 0})
