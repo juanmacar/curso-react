@@ -1,32 +1,31 @@
 import { useEffect, useState } from "react";
 import ItemDetail from './ItemDetail';
-import '../styles.css';
 import {useParams} from 'react-router-dom';
 import { getFirestore } from '../firebase';
-
+import '../styles.css';
 
 //comienzo del componente
 function ItemDetailContainer() {
-  const {idurl} = useParams();
-  //useState para actualizar el valor del array cursos
-  const [cursos, setCursos] = useState([])
 
-  //función que llama a la API, baja los datos y actualiza el array cursos, que es de donde vamos a sacar los datos a renderizar
-  async function obtenerDatos() {
-    const db = getFirestore();
-    const itemCollection = db.collection("cursos");
-    itemCollection.get()
-    .then((respuesta)=>{
-      setCursos(respuesta.docs.map(curso => curso.data()))
-    })
-  }
-  //useEffect que actualiza el contenido de las tarjetas el el primer renderizado 
+  const {idurl} = useParams();//almaceno el parametro de la URL
+  const [cursos, setCursos] = useState([])//useState para actualizar el valor del array cursos
+
+
+
+  //useEffect que muestra el contenido de las tarjetas el el primer renderizado 
   useEffect(()=>{
+
+      //función que llama a la API, baja los datos y actualiza el array cursos, que es de donde vamos a sacar los datos a renderizar. Si hay un parametro en la URL con ID de curso, baja solo ese. Si no lo hay, los baja todos.
+    async function obtenerDatos() {
+      const db = getFirestore();
+      const itemCollection = db.collection("cursos");
+      const respuesta = (idurl === undefined ? await itemCollection.get() : await itemCollection.where("id", "==", parseInt(idurl)).get()) // esta es la linea que determina, en función de la URL, si debe bajar todos los documentos o solo uno.
+      setCursos(respuesta.docs.map(curso => curso.data()))
+    }
+    
     obtenerDatos()
-  }, [])
-  
-  let retorno = "";
-  if (idurl === undefined) {
+  }, [idurl])
+
   return (
     <div id="productosdisponibles">
       {
@@ -37,16 +36,6 @@ function ItemDetailContainer() {
         ))
       }
     </div>
-)
-    } else {
-      for (const item of cursos) {
-        if (item.id === parseInt(idurl)) {
-          retorno = <ItemDetail titulo={item.titulo} precio={item.precio} imagen={item.imagen} descripcion={item.descripcion} key={item.id} stock={item.stock} id={item.id}/>
-          break
-        }
-      }
-      return (retorno)
-    }
-
-}
+  )
+} 
 export default ItemDetailContainer

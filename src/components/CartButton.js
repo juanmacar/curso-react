@@ -21,11 +21,10 @@ const CartButton = ()=> {
     const [carrito, setCarrito] = useState([]);
     const cart = useCart();
 
-    const updateCount = ()=>{
-    setCarrito(cart.cart.addedItems)
-}
 useEffect(
-    ()=>{updateCount()},
+    ()=>{
+        setCarrito(cart.cart.addedItems)
+    },
     [cart]
 );
     return(

@@ -1,13 +1,8 @@
 import ItemList from './itemList';
 
-const ItemListContainer = (props)=> {
+const ItemListContainer = ()=> {
 
     return(
-    <div>
-        <h3>
-            ¡Hola, {props.nombre}!
-        </h3>
         <ItemList />
-    </div>
     )}
 export default ItemListContainer

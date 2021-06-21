@@ -14,24 +14,24 @@ function App() {
 
     <BrowserRouter>
       <CartContextProvider>
-      <BarraApp />
-      <Switch>
-        <Route exact path="/">
+      <BarraApp key={1}/>
+      <Switch key={2}>
+        <Route exact path="/" key={1}>
           <ItemListContainer/>
         </Route>
-        <Route exact path="/detalles">
+        <Route exact path="/detalles" key={2}>
           <ItemDetailContainer/>
         </Route>
-        <Route exact path="/detalles/:idurl">
+        <Route exact path="/detalles/:idurl" key={3}>
           <ItemDetailContainer/>
         </Route>        
-        <Route exact path="/gratuitos">
+        <Route exact path="/gratuitos" key={4}>
           <ItemDetailContainer/>
         </Route>
-        <Route exact path="/intensivos">
+        <Route exact path="/intensivos" key={5}>
           <ItemDetailContainer/>
         </Route>
-        <Route exact path="/cart">
+        <Route exact path="/cart" key={6}>
           <CartWidget />
         </Route>
       </Switch>

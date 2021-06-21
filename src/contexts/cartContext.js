@@ -1,9 +1,6 @@
 import { createContext, useState, useContext } from "react";
-
 export const CartContext = createContext();
-
 export const useCart = ()=> useContext(CartContext)
-
 export const CartContextProvider = ({ children }) =>{
 const [cart, setCart] = useState({addedItems: [], totalprice : 0})
 
@@ -15,7 +12,9 @@ function clearCart() {
 }
 
 function removeItem(id) {
-    return (cart.addedItems.filter(curso => curso.id !==id))
+    setCart(
+        { ...cart, addedItems: cart.addedItems.filter(curso => curso.id !==id)}
+        )
 }
 
 function updateItem(id, cantidad) {
