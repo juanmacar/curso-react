@@ -4,6 +4,7 @@ import { useCart } from '../contexts/CartContext';
 import { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 
+//estilos del indicador de cantidad de productos en el carrito
 const styles = {
     "backgroundColor" : "#f00",
     "borderRadius" : "12px",
@@ -18,22 +19,21 @@ const styles = {
 
 }
 const CartButton = ()=> {
-    const [carrito, setCarrito] = useState([]);
+    const [carrito, setCarrito] = useState(0);
     const cart = useCart();
 
 useEffect(
     ()=>{
-        setCarrito(cart.cart.addedItems)
+        setCarrito(cart.cart.addedItems.length)
     },
     [cart]
 );
     return(
     <>
     <IconButton>
-    <NavLink to={`/cart`}><LocalGroceryStoreOutlinedIcon /></NavLink>
+    <NavLink to={`/cart`} style={{"textDecoration": "none", "color" : "white"}}><LocalGroceryStoreOutlinedIcon /></NavLink>
     </IconButton>
-    {carrito.length!==0 && <div style={styles}>{carrito.length}</div>}
-    
+    {carrito!==0 && <div style={styles}>{carrito}</div> /*indicador de cantidad de productos en el carrito*/} 
     </>
     )}
 export default CartButton

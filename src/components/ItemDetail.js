@@ -20,31 +20,25 @@ function ItemDetail (props) {
     setCompraterminada(true)//registro que terminó la selección.
     if (!cart.isInCart(props.id)) {
       cart.addItem({id : props.id, nombre: props.titulo, precio : props.precio, cantidad : count})//cargo el producto en el cart.
-    } else { //actualizar la cantidad si el producto ya estaba en el carrito.
-      for (const item of cart.cart.addedItems) { //interaré chequear el stock antes de actualizar la cantidad. En desarrollo
-        if (item.id === props.id) {
-
-        }
-      }
-      cart.updateItem(props.id, count)
     }
   }
   const Boton = ()=> { //botón que renderiza de forma condicional, el boton de elegir cantidad o el de terminar compra.
     let resultado = ""; //variable para guardar el return
     if (compraterminada) {
-      resultado = <div style={{display:"block"}}><NavLink to={`/cart`}><Button>Terminar compra</Button></NavLink></div>;
+      resultado = <div style={{display:"block"}}><NavLink to={`/cart`}><Button className="boton">Terminar compra</Button></NavLink></div>;
     } else {
-      resultado = <><ItemCount sumar={sumar} restar={restar} stock={props.stock} count={count}/><Button onClick={agregarAlCarrito}>Agregar al carrito</Button></>
+      resultado = <><ItemCount sumar={sumar} restar={restar} stock={props.stock} count={count}/><Button onClick={agregarAlCarrito} className="boton">Agregar al carrito</Button></>
     }
     return (resultado)
   }
   return (
-    <div keys={props.id} className="cajaproducto" >
+    <div keys={props.id} className="cajaproducto unproducto" >
+      <img src={`../images/${props.imagen}`} alt="" />
       <h1>{props.titulo}</h1>
       <h3>Precio: {props.precio} ARS</h3>
       <h4>Detalles:</h4>
       <p>{props.descripcion}</p>
-      <img src={`images/${props.imagen}`} alt="" />
+      {cart.isInCart(props.id) && <div className="alerta-producto-repetido">El producto ya está en tu carrito.</div>}
       <Boton></Boton>
     </div>
   )

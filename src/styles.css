@@ -4,6 +4,12 @@
     padding: 20px;
     background: linear-gradient(167deg, rgba(240,240,240,1) 0%, rgba(233,233,233,1) 100%);
     margin: 5px;
+    flex-grow: 1;
+}
+
+.unproducto{
+    width: 100%;
+    height: 100%;
 }
 
 #productosdisponibles {
@@ -18,8 +24,22 @@ body {
 
 /*encabezados h1*/
 h1 {
-    font-size: 3em;
+    font-size: 2em;
     color: #8400f6;
+}
+
+/*estilo del boton de agregar al carrito*/
+.boton {
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 5px;
+    background: linear-gradient(117deg, rgba(132,0,246,1) 0%, rgba(44,0,138,1) 100%);
+    font-size: 1.3em;
+    border: solid 1px;
+}
+.boton span {
+    color: white;
 }
 
 @media only screen and (min-width:1921px) {
@@ -47,4 +67,31 @@ h1 {
         width: 100%;
         min-width: 350px;
     }
+}
+
+.form input {
+    margin:5px;
+    padding:5px;
+    border:1px solid rgb(76, 0, 255);
+    border-radius:10px;
+    color: rgb(76, 0, 255);
+}
+
+.alerta-producto-repetido {
+    background-color: rgb(23, 195, 0);
+    color:white;
+    padding:5px;
+    margin: 10px;
+}
+
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading div h1 {
+    display:block;
 }

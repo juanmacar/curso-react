@@ -23,13 +23,13 @@ async function obtenerDatos() {
     obtenerDatos()
   }, [])
   
-  if (cursos[0] === undefined) return <h1>Loading</h1>
+  if (cursos[0] === undefined) return <div className="loading"><div><h1>Loading</h1><br/><img src="images/spinner.gif" alt="preloader"/></div></div>
   return (
     <div id="productosdisponibles">
       {
         cursos.map(curso => (
         <>
-        <Item titulo={curso.titulo} precio={curso.precio} id={curso.id} key={curso.id}/>
+        <Item titulo={curso.titulo} precio={curso.precio} id={curso.id} key={curso.id} imagen={curso.imagen}/>
         </>
         ))
       }

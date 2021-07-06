@@ -11,7 +11,6 @@ function ItemDetailContainer() {
   const [cursos, setCursos] = useState([])//useState para actualizar el valor del array cursos
 
 
-
   //useEffect que muestra el contenido de las tarjetas el el primer renderizado 
   useEffect(()=>{
 
@@ -25,10 +24,10 @@ function ItemDetailContainer() {
     
     obtenerDatos()
   }, [idurl])
-
   return (
     <div id="productosdisponibles">
       {
+        //Uso un array y map así, en caso de que no haya parámetro en la URL para saber que producto mostrar, los muestro todos.
         cursos.map(curso => (
         <>
         <ItemDetail titulo={curso.titulo} precio={curso.precio} imagen={curso.imagen} descripcion={curso.descripcion} key={curso.id} stock={curso.stock} id={curso.id}/>

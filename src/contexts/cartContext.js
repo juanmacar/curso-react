@@ -17,7 +17,8 @@ function removeItem(id) {
         )
 }
 
-function updateItem(id, cantidad) {
+//esta función se pensó para actualizar el stock cuando se agrega dos veces el mismo producto, pero no está en uso en esta versión hasta que este listo el sistema para asegurar que no se exceda el stock.
+/* function updateItem(id, cantidad) {
     const modifiedItems = cart.addedItems.map(item => {
         if (item.id === id) {
             return { ...item, cantidad: item.cantidad + cantidad}
@@ -25,12 +26,12 @@ function updateItem(id, cantidad) {
         return item;
     });
     setCart({ ...cart, addedItems: modifiedItems })
-}
+} */
 function isInCart(id) {
     return (cart.addedItems.some(curso => curso.id ===id))
 }
     return (
-        <CartContext.Provider value={{cart, addItem, clearCart, removeItem, isInCart, updateItem}}>
+        <CartContext.Provider value={{cart, addItem, clearCart, removeItem, isInCart}}>
             {children}
         </CartContext.Provider>
     )

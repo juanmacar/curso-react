@@ -1,5 +1,4 @@
-import { AppBar, Toolbar, IconButton, Typography, Button } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import CartButton from "./CartButton";
 import { NavLink } from "react-router-dom";
@@ -20,16 +19,11 @@ const BarraApp = ()=> {
 const classes = useStyles();
 
     return (
-        <AppBar position="static" style={{background: "#e6b960"}}>
+        <AppBar position="static" style={{background: "#17005e"}}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
-          <NavLink to={`/`}>Juan Macarlupu</NavLink>
+          <NavLink style={{"textDecoration": "none", "color" : "white"}} to={`/`}><img src="images/logo.png" alt="logo"/></NavLink>
           </Typography>
-          <NavLink to={`/gratuitos`}><Button color="inherit">Cursos gratuitos</Button></NavLink>
-          <NavLink to={`/intensivos`}><Button color="inherit">Cursos intensivos</Button></NavLink>
           <CartButton/>
         </Toolbar>
       </AppBar>
