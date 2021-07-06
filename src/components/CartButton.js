@@ -21,12 +21,15 @@ const styles = {
 const CartButton = ()=> {
     const [carrito, setCarrito] = useState(0);
     const cart = useCart();
-
+    let total = 0
+    for (const i of cart.cart.addedItems) {
+        total = total + i.cantidad
+    }
 useEffect(
     ()=>{
-        setCarrito(cart.cart.addedItems.length)
+        setCarrito(total)
     },
-    [cart]
+    [cart, total]
 );
     return(
     <>

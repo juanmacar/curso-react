@@ -9,6 +9,8 @@ const PurchaseForm = (props)=> {
         <input type="text" name="lastname" value={props.buyerData.lastname} onChange={props.updateForm}/><br/>
         <label>Email:</label>
         <input type="text" name="email" value={props.buyerData.email} onChange={props.updateForm}/><br/>
+        <label>Confirmar email:</label>
+        <input type="text" name="email2" value={props.buyerData.email2} onChange={props.updateForm}/><br/>
         </div>
     )
 }

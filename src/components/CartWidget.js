@@ -45,7 +45,7 @@ let newOrder = {
     sendOrder(newOrder)
 }
 //estados para pasar el formulario para que los opere
-const [buyerData, setBuyerData] = useState({name:"", lastname:"", email:""});
+const [buyerData, setBuyerData] = useState({name:"", lastname:"", email:"", email2:""});
 const updateForm = (evt)=> {
     setBuyerData({...buyerData, [evt.target.name] : evt.target.value })
 }
@@ -62,7 +62,7 @@ return (
     }
     <h2>Tus datos para el pedido:</h2>
     <PurchaseForm updateForm={updateForm} buyerData={buyerData}/>
-    <Button onClick={()=>{generarOrden()}} disabled={!(buyerData.name && buyerData.lastname && buyerData.email)}>Pagar</Button>
+    <Button onClick={()=>{generarOrden()}} disabled={!((buyerData.name && buyerData.lastname && buyerData.email && buyerData.email2) && (buyerData.email === buyerData.email2))}>Pagar</Button>
     
     </div>
 )

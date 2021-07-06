@@ -24,6 +24,9 @@ function App() {
         </Route>
         <Route exact path="/detalles/:idurl" key={3}>
           <ItemDetailContainer/>
+        </Route>
+        <Route exact path="/category/:cat" key={3}>
+          <ItemListContainer/>
         </Route>        
         <Route exact path="/cart" key={6}>
           <CartWidget />
